@@ -158,7 +158,7 @@ window.addEventListener('scroll', () => {
       const nameData = card.getAttribute('data-name') || card.querySelector('.name').innerText;
       modalTitle.innerText = nameData.split(' - ')[0];
       modalRole.innerText = (nameData.split(' - ')[1] || card.querySelector('.role').innerText);
-      modalBio.innerText = 'Experienced. Mission‑driven. Loves green tea. (Edit this text to add a bio.)';
+      modalBio.innerText = (nameData.split(' - ')[2] || 'Experienced. Mission‑driven.I Love Buildings');
       modal.style.display = 'flex';
       // accessible focus
       closeBtn.focus();
@@ -181,3 +181,85 @@ window.addEventListener('scroll', () => {
       }
     });
 
+
+//Logo belt code
+let logoScrollers = {};
+function initiateLogoScroller(container = document) {
+  const rows = container.querySelectorAll(".logo-scroller-row");
+
+  rows.forEach(row => {
+    // Kill any existing animation for this row
+    if (logoScrollers[row]) {
+      logoScrollers[row].kill();
+      delete logoScrollers[row];
+    }
+
+    const rowItems = Array.from(row.children);
+    let rowWidth = row.scrollWidth;
+    const containerWidth = window.innerWidth;
+
+    // Prevent duplicate cloning
+    if (!row.dataset.cloned) {
+      let totalWidth = rowWidth;
+
+      // Clone logos until the total width is at least twice the viewport width
+      while (totalWidth < containerWidth * 2) {
+        rowItems.forEach(item => {
+          const clone = item.cloneNode(true);
+          row.appendChild(clone);
+          totalWidth += item.offsetWidth;
+        });
+      }
+
+      rowWidth = row.scrollWidth; // Update rowWidth after cloning
+      row.dataset.cloned = "true";
+    }
+
+    // Reset row position to start
+    gsap.set(row, { x: 0 });
+
+    // Calculate speed dynamically to maintain consistency
+    let baseSpeed = 20;
+    let duration = (rowWidth / containerWidth) * baseSpeed;
+
+    if (window.innerWidth < 768) {
+      duration *= 1.5; // Slow it down for mobile
+    }
+
+    // GSAP Infinite Scrolling
+    const tl = gsap.timeline({ repeat: -1, ease: "none" });
+
+    tl.to(row, {
+      x: `-${rowWidth / 2}px`, // Move by half the total width
+      duration: duration,
+      ease: "none",
+      onComplete: function () {
+        gsap.set(row, { x: 0 }); // Reset position to loop seamlessly
+      }
+    });
+
+    // Store the timeline for future cleanup
+    logoScrollers[row] = tl;
+
+    // Pause and resume on hover/touch
+    row.addEventListener("mouseenter", () => tl.pause());
+    row.addEventListener("mouseleave", () => tl.resume());
+    row.addEventListener("touchstart", () => tl.pause());
+    row.addEventListener("touchend", () => tl.resume());
+  });
+}
+
+// Initialize on page load
+initiateLogoScroller(document);
+
+// Re-initiate in AJAX overlay
+function loadNewContentViaAjax() {
+  setTimeout(() => {
+    const ajaxContainer = document.querySelector(".ajax-overlay");
+    if (ajaxContainer) {
+      initiateLogoScroller(ajaxContainer);
+    }
+  }, 1000);
+}
+
+    
