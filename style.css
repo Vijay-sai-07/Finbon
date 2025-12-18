@@ -1127,6 +1127,10 @@ p.lead {
         margin-top: 6rem;
     }
 
+    #home .container {
+        margin-top: 1rem;      
+    }
+    
     .left-para {
         max-width: 20%;
         min-width: 60%;
