@@ -4,13 +4,13 @@ const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('.section');
 const contactForm = document.getElementById('contactForm');
 
-hamburger.addEventListener('click', function() {
+hamburger.addEventListener('click', function () {
   hamburger.classList.toggle('active');
   navMenu.classList.toggle('active');
 });
 
 navLinks.forEach(link => {
-  link.addEventListener('click', function(e) {
+  link.addEventListener('click', function (e) {
     e.preventDefault();
 
     hamburger.classList.remove('active');
@@ -44,142 +44,136 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// contactForm.addEventListener('submit', function(e) {
-//   e.preventDefault();
-//   alert('Thank you for your message! We will get back to you soon.');
-//   this.reset();
-// });
+const contentData = {
+  '2': {
+    title: 'Construction & Interiors',
+    img_link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxmTJpfqpQ2fF6lvytQD9VMJMDkjYZMe1a2OYpiX2TCtXU2Y6YbNPseAKoOSfcejg9OYk&usqp=CAU",
+    points: [
+      "At Finbon, we specialize in delivering end-to-end construction solutions for residential, commercial, and industrial projects. From foundation to finishing, we combine innovative techniques with premium materials to ensure every structure reflects quality, safety, and sustainability. Our experienced team works closely with clients, architects, and consultants to turn visions into lasting realities.",
+      "With a focus on on-time delivery and budget-friendly execution, we ensure that every project is managed with precision. Whether it’s building a high-rise complex, a factory unit, or a luxury residence, Finbon’s commitment to excellence and attention to detail guarantees results that stand the test of time."
+    ]
+  },
+  '3': {
+    title: 'Strategic Demolition',
+    img_link: "images/Demolition2.jpeg",
+    points: [
+      "Finbon offers safe, efficient, and environmentally responsible demolition services tailored to projects of any size. Our expert team uses advanced equipment and proven techniques to handle everything from selective interior dismantling to full-scale structural demolitions. Safety is our top priority, and every project is carried out in compliance with industry regulations and environmental standards.We also focus on waste management and recycling, ensuring debris is handled responsibly to minimize environmental impact. Whether preparing a site for redevelopment or removing aging structures, Finbon ensures a smooth, secure, and timely demolition process."
+    ]
+  },
+  '4': {
+    title: 'Project Management Consultancy',
+    img_link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxmTJpfqpQ2fF6lvytQD9VMJMDkjYZMe1a2OYpiX2TCtXU2Y6YbNPseAKoOSfcejg9OYk&usqp=CAU",
+    points: [
+      "Our Project Management Consultancy (PMC) services are designed to ensure every project is executed seamlessly from start to finish. We handle planning, scheduling, cost estimation, quality assurance, and risk management to keep your project on track. With a client-centric approach, we provide transparent communication and real-time updates, enabling informed decision-making at every stage.",
+      "By combining technical expertise with proven management strategies, Finbon ensures that projects are completed on time, within budget, and to the highest quality standards. Whether for large infrastructure projects or bespoke developments, our PMC solutions provide you with the confidence that your vision is in expert hands."
+    ]
+  },
+  '1': {
+    title: 'Design & Building Information Modeling',
+    img_link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxmTJpfqpQ2fF6lvytQD9VMJMDkjYZMe1a2OYpiX2TCtXU2Y6YbNPseAKoOSfcejg9OYk&usqp=CAU",
+    points: [
+      "Finbon leverages the power of Building Information Modeling (BIM) to transform how projects are planned, designed, and executed. Our advanced 3D modeling solutions allow for precise visualization, improved collaboration among stakeholders, and seamless coordination of architectural, structural, and MEP systems.By adopting BIM, we help clients reduce errors, cut costs, and enhance efficiency throughout the project lifecycle. From pre-construction design optimization to facility management, our BIM solutions ensure every project benefits from data-driven decision-making and improved productivity."
+    ]
+  },
+  '5': {
+    title: 'Approval Assistance & Property Valuvation',
+    img_link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxmTJpfqpQ2fF6lvytQD9VMJMDkjYZMe1a2OYpiX2TCtXU2Y6YbNPseAKoOSfcejg9OYk&usqp=CAU",
+    points: [
+      "Navigating the complex landscape of government and regulatory approvals can delay projects and increase costs if not handled efficiently. At Finbon, we simplify this process by managing the entire approval journey for our clients. Our team ensures compliance with local building codes, zoning laws, and environmental regulations to secure the necessary clearances quickly and efficiently.",
+      "With our in-depth understanding of municipal processes and regulatory frameworks, we help eliminate roadblocks and keep your project moving forward. From initial documentation to final permits, Finbon ensures a smooth, hassle-free approval experience."
+    ]
+  }
+}
 
-    const contentData = {
-        '1': {
-            title: 'Construction',
-            img_link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxmTJpfqpQ2fF6lvytQD9VMJMDkjYZMe1a2OYpiX2TCtXU2Y6YbNPseAKoOSfcejg9OYk&usqp=CAU",
-            points: [
-                "At Finbon, we specialize in delivering end-to-end construction solutions for residential, commercial, and industrial projects. From foundation to finishing, we combine innovative techniques with premium materials to ensure every structure reflects quality, safety, and sustainability. Our experienced team works closely with clients, architects, and consultants to turn visions into lasting realities.",
-                "With a focus on on-time delivery and budget-friendly execution, we ensure that every project is managed with precision. Whether it’s building a high-rise complex, a factory unit, or a luxury residence, Finbon’s commitment to excellence and attention to detail guarantees results that stand the test of time."
-            ]
-        },
-        '2': {
-            title: 'Demolition',
-            img_link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxmTJpfqpQ2fF6lvytQD9VMJMDkjYZMe1a2OYpiX2TCtXU2Y6YbNPseAKoOSfcejg9OYk&usqp=CAU",
-            points: [
-                "Finbon offers safe, efficient, and environmentally responsible demolition services tailored to projects of any size. Our expert team uses advanced equipment and proven techniques to handle everything from selective interior dismantling to full-scale structural demolitions. Safety is our top priority, and every project is carried out in compliance with industry regulations and environmental standards.We also focus on waste management and recycling, ensuring debris is handled responsibly to minimize environmental impact. Whether preparing a site for redevelopment or removing aging structures, Finbon ensures a smooth, secure, and timely demolition process."
-            ]
-        },
-        '3': {
-            title: 'Project Management Consultancy',
-            img_link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxmTJpfqpQ2fF6lvytQD9VMJMDkjYZMe1a2OYpiX2TCtXU2Y6YbNPseAKoOSfcejg9OYk&usqp=CAU",
-            points: [
-                "Our Project Management Consultancy (PMC) services are designed to ensure every project is executed seamlessly from start to finish. We handle planning, scheduling, cost estimation, quality assurance, and risk management to keep your project on track. With a client-centric approach, we provide transparent communication and real-time updates, enabling informed decision-making at every stage.",
-                "By combining technical expertise with proven management strategies, Finbon ensures that projects are completed on time, within budget, and to the highest quality standards. Whether for large infrastructure projects or bespoke developments, our PMC solutions provide you with the confidence that your vision is in expert hands."
-            ]
-        },
-        '4': {
-            title: 'Building Information Modeling',
-            img_link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxmTJpfqpQ2fF6lvytQD9VMJMDkjYZMe1a2OYpiX2TCtXU2Y6YbNPseAKoOSfcejg9OYk&usqp=CAU",
-            points: [
-                "Finbon leverages the power of Building Information Modeling (BIM) to transform how projects are planned, designed, and executed. Our advanced 3D modeling solutions allow for precise visualization, improved collaboration among stakeholders, and seamless coordination of architectural, structural, and MEP systems.By adopting BIM, we help clients reduce errors, cut costs, and enhance efficiency throughout the project lifecycle. From pre-construction design optimization to facility management, our BIM solutions ensure every project benefits from data-driven decision-making and improved productivity."
-            ]
-        },
-        '5': {
-            title: 'Approval Assistance',
-            img_link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxmTJpfqpQ2fF6lvytQD9VMJMDkjYZMe1a2OYpiX2TCtXU2Y6YbNPseAKoOSfcejg9OYk&usqp=CAU",
-            points: [
-                "Navigating the complex landscape of government and regulatory approvals can delay projects and increase costs if not handled efficiently. At Finbon, we simplify this process by managing the entire approval journey for our clients. Our team ensures compliance with local building codes, zoning laws, and environmental regulations to secure the necessary clearances quickly and efficiently.",
-                "With our in-depth understanding of municipal processes and regulatory frameworks, we help eliminate roadblocks and keep your project moving forward. From initial documentation to final permits, Finbon ensures a smooth, hassle-free approval experience."
-            ]
-        }
-    }
+// for new div opening in side for services
 
-    // for new div opening in side for services
+const sidebar = document.getElementById('sidebar')
+const overlay = document.getElementById('overlay')
+const backButton = document.getElementById('backButton')
+const sidebarContent = document.getElementById('sidebarContent')
+const cards = document.querySelectorAll('.numbered-divs')
+const navbar = document.getElementById('navbar')
 
-    const sidebar = document.getElementById('sidebar')
-    const overlay = document.getElementById('overlay')
-    const backButton = document.getElementById('backButton')
-    const sidebarContent = document.getElementById('sidebarContent')
-    const cards = document.querySelectorAll('.numbered-divs')
-    const navbar = document.getElementById('navbar')
+function openSidebar(cardId) {
+  const content = contentData[cardId]
 
-    function openSidebar(cardId) {
-        const content = contentData[cardId]
-
-        sidebarContent.innerHTML = `
+  sidebarContent.innerHTML = `
         <img  class ="sidebar-img" src=${content.img_link}>
         <h2 class ="sidebar-title">${content.title}</h2>
         ${content.points.map(point => `<p class="sidebar-p">${point}</p>`).join('')}
   `
-        sidebar.classList.add('active')
-        overlay.classList.add('active')
-        document.body.classList.add('no-scroll')   
-        navbar.classList.add('blurr');
-    }
+  sidebar.classList.add('active')
+  overlay.classList.add('active')
+  document.body.classList.add('no-scroll')
+  navbar.classList.add('blurr');
+}
 
-    function closeSidebar() {
-        sidebar.classList.remove('active')
-        overlay.classList.remove('active')
-        document.body.classList.remove('no-scroll')
-                navbar.classList.remove('blurr');
+function closeSidebar() {
+  sidebar.classList.remove('active')
+  overlay.classList.remove('active')
+  document.body.classList.remove('no-scroll')
+  navbar.classList.remove('blurr');
 
-    }
+}
 
-    cards.forEach(card => {
-        card.addEventListener('click', () => {
-            console.log("ajgd")
-            const cardId = card.getAttribute('data-id')
-            openSidebar(cardId)
-        })
-    })
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    console.log("ajgd")
+    const cardId = card.getAttribute('data-id')
+    openSidebar(cardId)
+  })
+})
 
-    backButton.addEventListener('click', closeSidebar)
+backButton.addEventListener('click', closeSidebar)
 
-    overlay.addEventListener('click', closeSidebar)
+overlay.addEventListener('click', closeSidebar)
 
-    //our team-------------------------------------------------------------------
+//our team-------------------------------------------------------------------
 
-    const grid = document.getElementById('teamGrid');
-    const buttons = document.querySelectorAll('.filter-btn');
-    buttons.forEach(b=>b.addEventListener('click', ()=>{
-      buttons.forEach(x=>x.classList.remove('active'));
-      b.classList.add('active');
-      const f = b.getAttribute('data-filter');
-      document.querySelectorAll('.card').forEach(card=>{
-        card.style.display = (f === 'all' || card.getAttribute('data-type') === f) ? 'flex' : 'none';
-      });
-    }));
+const grid = document.getElementById('teamGrid');
+const buttons = document.querySelectorAll('.filter-btn');
+buttons.forEach(b => b.addEventListener('click', () => {
+  buttons.forEach(x => x.classList.remove('active'));
+  b.classList.add('active');
+  const f = b.getAttribute('data-filter');
+  document.querySelectorAll('.card').forEach(card => {
+    card.style.display = (f === 'all' || card.getAttribute('data-type') === f) ? 'flex' : 'none';
+  });
+}));
 
-    // modal
-    const modal = document.getElementById('modal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalRole = document.getElementById('modalRole');
-    const modalBio = document.getElementById('modalBio');
-    const closeBtn = document.getElementById('closeBtn');
+// modal
+const modal = document.getElementById('modal');
+const modalTitle = document.getElementById('modalTitle');
+const modalRole = document.getElementById('modalRole');
+const modalBio = document.getElementById('modalBio');
+const closeBtn = document.getElementById('closeBtn');
 
-    function openModalFromCard(card){
-      const nameData = card.getAttribute('data-name') || card.querySelector('.name').innerText;
-      modalTitle.innerText = nameData.split(' - ')[0];
-      modalRole.innerText = (nameData.split(' - ')[1] || card.querySelector('.role').innerText);
-      modalBio.innerText = (nameData.split(' - ')[2] || 'Experienced. Mission‑driven.I Love Buildings');
-      modal.style.display = 'flex';
-      // accessible focus
-      closeBtn.focus();
-    }
+function openModalFromCard(card) {
+  const nameData = card.getAttribute('data-name') || card.querySelector('.name').innerText;
+  modalTitle.innerText = nameData.split(' - ')[0];
+  modalRole.innerText = (nameData.split(' - ')[1] || card.querySelector('.role').innerText);
+  modalBio.innerText = (nameData.split(' - ')[2] || 'Experienced. Mission‑driven.I Love Buildings');
+  modal.style.display = 'flex';
+  // accessible focus
+  closeBtn.focus();
+}
 
-    document.querySelectorAll('.card').forEach(card=>{
-      card.addEventListener('click', ()=> openModalFromCard(card));
-      card.addEventListener('keydown', e=>{ if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModalFromCard(card);} });
-    });
+document.querySelectorAll('.cardDatatype').forEach(card => {
+  card.addEventListener('click', () => openModalFromCard(card));
+  card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModalFromCard(card); } });
+});
 
-    closeBtn.addEventListener('click', ()=> modal.style.display = 'none');
-    modal.addEventListener('click', e=>{ if(e.target === modal) modal.style.display = 'none'; });
+closeBtn.addEventListener('click', () => modal.style.display = 'none');
+modal.addEventListener('click', e => { if (e.target === modal) modal.style.display = 'none'; });
 
-    // small enhancement: auto-generate avatar initials from name text if empty
-    document.querySelectorAll('.avatar').forEach((av, idx)=>{
-      if(!av.innerText.trim()){
-        const name = document.querySelectorAll('.name')[idx]?.innerText || '';
-        const initials = name.split(' ').map(s=>s[0]).slice(0,2).join('').toUpperCase();
-        av.innerText = initials || 'T';
-      }
-    });
+// small enhancement: auto-generate avatar initials from name text if empty
+document.querySelectorAll('.avatar').forEach((av, idx) => {
+  if (!av.innerText.trim()) {
+    const name = document.querySelectorAll('.name')[idx]?.innerText || '';
+    const initials = name.split(' ').map(s => s[0]).slice(0, 2).join('').toUpperCase();
+    av.innerText = initials || 'T';
+  }
+});
 
 
 //Logo belt code
@@ -262,4 +256,78 @@ function loadNewContentViaAjax() {
   }, 1000);
 }
 
-    
+document.addEventListener("DOMContentLoaded", () => {
+  const items = document.querySelectorAll(".carousel__item");
+  let index = 0;
+  let intervalId;
+  let isPaused = false;
+
+  function updateSlides() {
+    items.forEach((item, i) => {
+      const diff = (i - index + items.length) % items.length;
+
+      if (diff === 0) {
+        // Center slide
+        item.classList.add("active-slide");
+
+        item.style.transform = "translateX(0) scale(1)";
+        item.style.opacity = "1";
+        item.style.zIndex = "3";
+      } else {
+        item.classList.remove("active-slide");
+
+        if (diff === 1) {
+          item.style.transform = "translateX(50%) scale(0.7)";
+          item.style.opacity = "0.2";
+          item.style.zIndex = "2";
+        } else if (diff === items.length - 1) {
+          item.style.transform = "translateX(-50%) scale(0.7)";
+          item.style.opacity = "0.2";
+          item.style.zIndex = "2";
+        } else {
+          item.style.transform = "translateX(-50%) scale(0.5)";
+          item.style.opacity = "0";
+          item.style.zIndex = "1";
+        }
+      }
+    });
+
+    attachHoverEvents(); // reattach events to the active slide
+  }
+
+  function startCarousel() {
+    intervalId = setInterval(() => {
+      if (!isPaused) {
+        index = (index + 1) % items.length;
+        updateSlides();
+      }
+    }, 3000);
+  }
+
+  function stopCarousel() {
+    clearInterval(intervalId);
+  }
+
+  function attachHoverEvents() {
+    // Remove old listeners from all slides
+    items.forEach(item => {
+      item.onmouseenter = null;
+      item.onmouseleave = null;
+    });
+
+    // Add listener only for the active slide
+    const activeSlide = document.querySelector(".active-slide");
+
+    if (activeSlide) {
+      activeSlide.onmouseenter = () => {
+        isPaused = true;
+      };
+      activeSlide.onmouseleave = () => {
+        isPaused = false;
+      };
+    }
+  }
+
+  updateSlides();
+  startCarousel();
+});
