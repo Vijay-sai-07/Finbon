@@ -4,6 +4,18 @@ const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('.section');
 const contactForm = document.getElementById('contactForm');
 
+// Splash Screen Animation
+document.addEventListener('DOMContentLoaded', function () {
+  const splashScreen = document.getElementById('splashScreen');
+  
+  if (splashScreen) {
+    // Hide splash screen after 4.5 seconds (matches CSS animation duration)
+    setTimeout(function () {
+      splashScreen.classList.add('hidden');
+    }, 4500);
+  }
+});
+
 hamburger.addEventListener('click', function () {
   hamburger.classList.toggle('active');
   navMenu.classList.toggle('active');
