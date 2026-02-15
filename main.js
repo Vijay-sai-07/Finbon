@@ -343,3 +343,102 @@ document.addEventListener("DOMContentLoaded", () => {
   updateSlides();
   startCarousel();
 });
+
+/* ================================
+   Testimonial Carousel Functionality
+   ================================ */
+document.addEventListener('DOMContentLoaded', function() {
+  const track = document.getElementById('testimonialTrack');
+  const indicatorsContainer = document.getElementById('testIndicators');
+  const prevBtn = document.querySelector('.test-prev');
+  const nextBtn = document.querySelector('.test-next');
+  
+  if (!track) return;
+
+  const items = Array.from(track.querySelectorAll('.test-item'));
+  let currentIndex = 0;
+  let isLargeScreen = window.innerWidth >= 769;
+
+  // Create indicators
+  function createIndicators() {
+    indicatorsContainer.innerHTML = '';
+    items.forEach((_, index) => {
+      const dot = document.createElement('div');
+      dot.className = `test-dot ${index === 0 ? 'active' : ''}`;
+      dot.addEventListener('click', () => goToSlide(index));
+      indicatorsContainer.appendChild(dot);
+    });
+  }
+
+  // Update slide position
+  function updateSlidePosition() {
+    if (isLargeScreen) {
+      // Desktop: horizontal scroll
+      const item = items[currentIndex];
+      const itemWidth = item.getBoundingClientRect().width;
+      const trackWidth = track.getBoundingClientRect().width;
+      const trackPadding = 64; // 4rem padding on each side
+      
+      // Calculate scroll position with padding offset
+      let scrollPos;
+      if (currentIndex === 0) {
+        // First item - scroll to 0 (padding will create gap)
+        scrollPos = 0;
+      } else if (currentIndex === items.length - 1) {
+        // Last item - scroll to end while maintaining right padding
+        scrollPos = track.scrollWidth - trackWidth;
+      } else {
+        // Middle items - center in view
+        scrollPos = item.offsetLeft - (trackWidth - itemWidth) / 2;
+        scrollPos -= trackPadding; // Add padding offset
+      }
+      
+      track.scrollTo({ left: scrollPos, behavior: 'smooth' });
+    } else {
+      // Mobile: vertical scroll
+      const item = items[currentIndex];
+      const scrollPos = item.offsetTop - 60;
+      track.parentElement.scrollTo({ top: scrollPos, behavior: 'smooth' });
+    }
+    updateIndicators();
+  }
+
+  // Update indicators
+  function updateIndicators() {
+    document.querySelectorAll('.test-dot').forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === currentIndex);
+    });
+  }
+
+  // Go to specific slide
+  function goToSlide(index) {
+    currentIndex = Math.max(0, Math.min(index, items.length - 1));
+    updateSlidePosition();
+  }
+
+  // Next slide
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % items.length;
+    updateSlidePosition();
+  }
+
+  // Previous slide
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + items.length) % items.length;
+    updateSlidePosition();
+  }
+
+  // Detect screen size changes
+  window.addEventListener('resize', () => {
+    isLargeScreen = window.innerWidth >= 769;
+    updateSlidePosition();
+  });
+
+  // Attach event listeners
+  if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+  if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+  // Initialize
+  createIndicators();
+  updateSlidePosition();
+});
